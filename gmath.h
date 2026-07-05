@@ -60,6 +60,7 @@
                 union {                                                                      \
                     T z;                                                                     \
                     T b;                                                                     \
+                    T p;                                                                     \
                 };                                                                           \
             };                                                                               \
             T v[3];                                                                          \
@@ -96,10 +97,12 @@
                 union {                                                                                          \
                     T z;                                                                                         \
                     T b;                                                                                         \
+                    T p;                                                                                         \
                 };                                                                                               \
                 union {                                                                                          \
                     T w;                                                                                         \
                     T a;                                                                                         \
+                    T q;                                                                                         \
                 };                                                                                               \
             };                                                                                                   \
             T v[4];                                                                                              \
@@ -169,7 +172,5 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC4_ALIASER, , GMATH_VEC4_APPENDER);
 #undef GMATH_VEC4_APPENDER
 
 #endif
-
-#undef EVAL
 
 #endif
