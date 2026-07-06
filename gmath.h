@@ -36,6 +36,9 @@
     Gmath##name##2;
 
 #define GMATH_VEC2_METHODS_DECLARER(name, T, _)                                              \
+    static inline Gmath##name##2 gmathBroadcast##name##2(T value) {                          \
+        return (Gmath##name##2){.x = value, .y = value};                                     \
+    }                                                                                        \
     static inline Gmath##name##2 gmathAdd##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) { \
         return (Gmath##name##2){.x = lhs.x + rhs.x, .y = lhs.y + rhs.y};                     \
     }                                                                                        \
@@ -105,6 +108,9 @@
     Gmath##name##3;
 
 #define GMATH_VEC3_METHODS_DECLARER(name, T, _)                                                        \
+    static inline Gmath##name##3 gmathBroadcast##name##3(T value) {                                    \
+        return (Gmath##name##3){.x = value, .y = value, .z = value};                                   \
+    }                                                                                                  \
     static inline Gmath##name##3 gmathAdd##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {           \
         return (Gmath##name##3){.x = lhs.x + rhs.x, .y = lhs.y + rhs.y, .z = lhs.z + rhs.z};           \
     }                                                                                                  \
@@ -179,6 +185,9 @@
     Gmath##name##4;
 
 #define GMATH_VEC4_METHODS_DECLARER(name, T, _)                                                                       \
+    static inline Gmath##name##4 gmathBroadcast##name##4(T value) {                                                   \
+        return (Gmath##name##4){.x = value, .y = value, .z = value, .w = value};                                      \
+    }                                                                                                                 \
     static inline Gmath##name##4 gmathAdd##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {                          \
         return (Gmath##name##4){.x = lhs.x + rhs.x, .y = lhs.y + rhs.y, .z = lhs.z + rhs.z, .w = lhs.w + rhs.w};      \
     }                                                                                                                 \
@@ -249,8 +258,26 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC3_METHODS_DECLARER, , ___GMATH_EVAL)
 #undef GMATH_VEC3_METHODS_DECLARER
 ___GMATH_VECTOR_TYPES(GMATH_VEC4_METHODS_DECLARER, , ___GMATH_EVAL)
 #undef GMATH_VEC4_METHODS_DECLARER
- 
+
 #define ___GMATH_COMMA ,
+
+#define ___GMATH_BROADCAST2_GENERICER(name, T, _) \
+    T:                                            \
+    gmathBroadcast##name##2
+#define gmathBroadcast2(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_BROADCAST2_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_BROADCAST3_GENERICER(name, T, _) \
+    T:                                            \
+    gmathBroadcast##name##3
+#define gmathBroadcast3(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_BROADCAST3_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_BROADCAST4_GENERICER(name, T, _) \
+    T:                                            \
+    gmathBroadcast##name##4
+#define gmathBroadcast4(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_BROADCAST4_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
 
 #define ___GMATH_ADD_GENERICER(name, _1, _2) \
     Gmath##name##2 : gmathAdd##name##2, Gmath##name##3 : gmathAdd##name##3, Gmath##name##4 : gmathAdd##name##4
