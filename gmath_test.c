@@ -9,5 +9,5 @@ int main() {
     ivec2 a = {.x = 3, .y = 4};
     ivec2 b = {.x = 1, .y = 10};
     vec2 c = gmathToVec(gmathMul(a, b));
-    printf(GMATH_FMT_Vec2 "\n", GMATH_PRI2(c));
+    printf(FMT_Vec2 "\n", PRIv2(c));
 }

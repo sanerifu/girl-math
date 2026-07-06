@@ -340,13 +340,13 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC4_METHODS_DECLARER, , ___GMATH_EVAL)
 #define GMATH_FMT_I64Vec4 "(%" SCNi64 ", %" SCNi64 ", %" SCNi64 ", %" SCNi64 ")"
 #define GMATH_FMT_U64Vec4 "(%" SCNu64 ", %" SCNu64 ", %" SCNu64 ", %" SCNu64 ")"
 
-#define GMATH_PRI2(v) v.x, v.y
-#define GMATH_PRI3(v) v.x, v.y, v.z
-#define GMATH_PRI4(v) v.x, v.y, v.z, v.w
+#define GMATH_PRIv2(v) v.x, v.y
+#define GMATH_PRIv3(v) v.x, v.y, v.z
+#define GMATH_PRIv4(v) v.x, v.y, v.z, v.w
 
-#define GMATH_SCN2(v) &v.x, &v.y
-#define GMATH_SCN3(v) &v.x, &v.y, &v.z
-#define GMATH_SCN4(v) &v.x, &v.y, &v.z, &v.w
+#define GMATH_SCNv2(v) &v.x, &v.y
+#define GMATH_SCNv3(v) &v.x, &v.y, &v.z
+#define GMATH_SCNv4(v) &v.x, &v.y, &v.z, &v.w
 
 #ifndef GMATH_NAMESPACED_ONLY
 
@@ -367,6 +367,47 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC3_ALIASER, , GMATH_VEC3_APPENDER)
 ___GMATH_VECTOR_TYPES(GMATH_VEC4_ALIASER, , GMATH_VEC4_APPENDER)
 #undef GMATH_VEC4_ALIASER
 #undef GMATH_VEC4_APPENDER
+
+#define FMT_Vec2 GMATH_FMT_Vec2
+#define FMT_DVec2  GMATH_FMT_DVec2 
+#define FMT_I8Vec2 GMATH_FMT_I8Vec2
+#define FMT_U8Vec2 GMATH_FMT_U8Vec2
+#define FMT_I16Vec2 GMATH_FMT_I16Vec2
+#define FMT_U16Vec2 GMATH_FMT_U16Vec2
+#define FMT_I32Vec2 GMATH_FMT_I32Vec2
+#define FMT_U32Vec2 GMATH_FMT_U32Vec2
+#define FMT_I64Vec2 GMATH_FMT_I64Vec2
+#define FMT_U64Vec2 GMATH_FMT_U64Vec2
+
+#define FMT_Vec3 GMATH_FMT_Vec3
+#define FMT_DVec3 GMATH_FMT_DVec3
+#define FMT_I8Vec3 GMATH_FMT_I8Vec3
+#define FMT_U8Vec3 GMATH_FMT_U8Vec3
+#define FMT_I16Vec3 GMATH_FMT_I16Vec3
+#define FMT_U16Vec3 GMATH_FMT_U16Vec3
+#define FMT_I32Vec3 GMATH_FMT_I32Vec3
+#define FMT_U32Vec3 GMATH_FMT_U32Vec3
+#define FMT_I64Vec3 GMATH_FMT_I64Vec3
+#define FMT_U64Vec3 GMATH_FMT_U64Vec3
+
+#define FMT_Vec4 GMATH_FMT_Vec4
+#define FMT_DVec4 GMATH_FMT_DVec4
+#define FMT_I8Vec4 GMATH_FMT_I8Vec4
+#define FMT_U8Vec4 GMATH_FMT_U8Vec4
+#define FMT_I16Vec4 GMATH_FMT_I16Vec4
+#define FMT_U16Vec4 GMATH_FMT_U16Vec4
+#define FMT_I32Vec4 GMATH_FMT_I32Vec4
+#define FMT_U32Vec4 GMATH_FMT_U32Vec4
+#define FMT_I64Vec4 GMATH_FMT_I64Vec4
+#define FMT_U64Vec4 GMATH_FMT_U64Vec4
+
+#define PRIv2(v) GMATH_PRIv2(v)
+#define PRIv3(v) GMATH_PRIv3(v)
+#define PRIv4(v) GMATH_PRIv4(v)
+
+#define SCNv2(v) GMATH_SCNv2(v)
+#define SCNv3(v) GMATH_SCNv3(v)
+#define SCNv4(v) GMATH_SCNv4(v)
 
 #endif
 
