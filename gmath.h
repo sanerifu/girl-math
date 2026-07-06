@@ -307,6 +307,69 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC4_METHODS_DECLARER, , ___GMATH_EVAL)
 #define gmathToVec(value) \
     _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_FLOAT_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
 
+#define ___GMATH_TO_DOUBLE_GENERICER(name, _1, _2)             \
+    Gmath##name##2 : gmath##name##2##ToDVec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToDVec3, \
+                                      Gmath##name##4 : gmath##name##4##ToDVec4
+#define gmathToDVec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_DOUBLE_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_I8_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToI8Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToI8Vec3, \
+                                      Gmath##name##4 : gmath##name##4##I8ToVec4
+#define gmathToI8Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_I8_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_U8_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToU8Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToU8Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToU8Vec4
+#define gmathToU8Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_U8_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_I16_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToI16Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToI16Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToI16Vec4
+#define gmathToI16Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_I16_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_U16_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToU16Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToU16Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToU16Vec4
+#define gmathToU16Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_U16_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_I32_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToI32Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToI32Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToI32Vec4
+#define gmathToI32Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_I32_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_U32_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToU32Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToU32Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToU32Vec4
+#define gmathToU32Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_U32_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_I64_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToI64Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToI64Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToI64Vec4
+#define gmathToI64Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_I64_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define ___GMATH_TO_U64_GENERICER(name, _1, _2)                  \
+    Gmath##name##2 : gmath##name##2##ToU64Vec2,                  \
+                     Gmath##name##3 : gmath##name##3##ToU64Vec3, \
+                                      Gmath##name##4 : gmath##name##4##ToU64Vec4
+#define gmathToU64Vec(value) \
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_U64_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
 #define GMATH_FMT_Vec2 "(%g, %g)"
 #define GMATH_FMT_DVec2 "(%lg, %lg)"
 #define GMATH_FMT_I8Vec2 "(%" SCNi8 ", %" SCNi8 ")"
@@ -369,7 +432,7 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC4_ALIASER, , GMATH_VEC4_APPENDER)
 #undef GMATH_VEC4_APPENDER
 
 #define FMT_Vec2 GMATH_FMT_Vec2
-#define FMT_DVec2  GMATH_FMT_DVec2 
+#define FMT_DVec2 GMATH_FMT_DVec2
 #define FMT_I8Vec2 GMATH_FMT_I8Vec2
 #define FMT_U8Vec2 GMATH_FMT_U8Vec2
 #define FMT_I16Vec2 GMATH_FMT_I16Vec2

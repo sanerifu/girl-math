@@ -6,8 +6,8 @@
 #include <stdio.h>
 
 int main() {
-    ivec2 a = {.x = 3, .y = 4};
-    ivec2 b = {.x = 1, .y = 10};
-    vec2 c = gmathToVec(gmathMul(a, b));
-    printf(FMT_Vec2 "\n", PRIv2(c));
+    vec2 a = {.x = 3, .y = 4};
+    vec2 b = {.x = 1, .y = 10};
+    ivec2 c = gmathToI32Vec(gmathDiv(a, b));
+    printf(FMT_I32Vec2 "\n", PRIv2(c));
 }
