@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cc gmath_test.c -std=gnu11 -o gmath_test -g3
+cc gmath_test.c -std=c11 -o gmath_test -g3 -Wall -Wextra -Wpedantic -pedantic
 
 if [ $? -eq 0 ]; then
     ./gmath_test "$@"
