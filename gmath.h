@@ -5,6 +5,7 @@
 #ifndef __GMATH_TYPES_H__
 #define __GMATH_TYPES_H__
 
+#include <inttypes.h>
 #include <stdint.h>
 
 #define ___GMATH_EVAL(...) __VA_ARGS__
@@ -305,6 +306,47 @@ ___GMATH_VECTOR_TYPES(GMATH_VEC4_METHODS_DECLARER, , ___GMATH_EVAL)
                                       Gmath##name##4 : gmath##name##4##ToVec4
 #define gmathToVec(value) \
     _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_TO_FLOAT_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+
+#define GMATH_FMT_Vec2 "(%g, %g)"
+#define GMATH_FMT_DVec2 "(%lg, %lg)"
+#define GMATH_FMT_I8Vec2 "(%" SCNi8 ", %" SCNi8 ")"
+#define GMATH_FMT_U8Vec2 "(%" SCNu8 ", %" SCNu8 ")"
+#define GMATH_FMT_I16Vec2 "(%" SCNi16 ", %" SCNi16 ")"
+#define GMATH_FMT_U16Vec2 "(%" SCNu16 ", %" SCNu16 ")"
+#define GMATH_FMT_I32Vec2 "(%" SCNi32 ", %" SCNi32 ")"
+#define GMATH_FMT_U32Vec2 "(%" SCNu32 ", %" SCNu32 ")"
+#define GMATH_FMT_I64Vec2 "(%" SCNi64 ", %" SCNi64 ")"
+#define GMATH_FMT_U64Vec2 "(%" SCNu64 ", %" SCNu64 ")"
+
+#define GMATH_FMT_Vec3 "(%g, %g, %g)"
+#define GMATH_FMT_DVec3 "(%lg, %lg, %lg)"
+#define GMATH_FMT_I8Vec3 "(%" SCNi8 ", %" SCNi8 ", %" SCNi8 ")"
+#define GMATH_FMT_U8Vec3 "(%" SCNu8 ", %" SCNu8 ", %" SCNu8 ")"
+#define GMATH_FMT_I16Vec3 "(%" SCNi16 ", %" SCNi16 ", %" SCNi16 ")"
+#define GMATH_FMT_U16Vec3 "(%" SCNu16 ", %" SCNu16 ", %" SCNu16 ")"
+#define GMATH_FMT_I32Vec3 "(%" SCNi32 ", %" SCNi32 ", %" SCNi32 ")"
+#define GMATH_FMT_U32Vec3 "(%" SCNu32 ", %" SCNu32 ", %" SCNu32 ")"
+#define GMATH_FMT_I64Vec3 "(%" SCNi64 ", %" SCNi64 ", %" SCNi64 ")"
+#define GMATH_FMT_U64Vec3 "(%" SCNu64 ", %" SCNu64 ", %" SCNu64 ")"
+
+#define GMATH_FMT_Vec4 "(%g, %g, %g, %g)"
+#define GMATH_FMT_DVec4 "(%lg, %lg, %lg, %lg)"
+#define GMATH_FMT_I8Vec4 "(%" SCNi8 ", %" SCNi8 ", %" SCNi8 ", %" SCNi8 ")"
+#define GMATH_FMT_U8Vec4 "(%" SCNu8 ", %" SCNu8 ", %" SCNu8 ", %" SCNu8 ")"
+#define GMATH_FMT_I16Vec4 "(%" SCNi16 ", %" SCNi16 ", %" SCNi16 ", %" SCNi16 ")"
+#define GMATH_FMT_U16Vec4 "(%" SCNu16 ", %" SCNu16 ", %" SCNu16 ", %" SCNu16 ")"
+#define GMATH_FMT_I32Vec4 "(%" SCNi32 ", %" SCNi32 ", %" SCNi32 ", %" SCNi32 ")"
+#define GMATH_FMT_U32Vec4 "(%" SCNu32 ", %" SCNu32 ", %" SCNu32 ", %" SCNu32 ")"
+#define GMATH_FMT_I64Vec4 "(%" SCNi64 ", %" SCNi64 ", %" SCNi64 ", %" SCNi64 ")"
+#define GMATH_FMT_U64Vec4 "(%" SCNu64 ", %" SCNu64 ", %" SCNu64 ", %" SCNu64 ")"
+
+#define GMATH_PRI2(v) v.x, v.y
+#define GMATH_PRI3(v) v.x, v.y, v.z
+#define GMATH_PRI4(v) v.x, v.y, v.z, v.w
+
+#define GMATH_SCN2(v) &v.x, &v.y
+#define GMATH_SCN3(v) &v.x, &v.y, &v.z
+#define GMATH_SCN4(v) &v.x, &v.y, &v.z, &v.w
 
 #ifndef GMATH_NAMESPACED_ONLY
 
