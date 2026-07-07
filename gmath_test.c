@@ -8,6 +8,7 @@
 int main() {
     vec2 a = {.x = 3, .y = 4};
     vec2 b = {.x = 1, .y = 10};
-    ivec2 c = gmathToI32Vec(gmathDiv(a, b));
+    ivec2 c = gmathToI32Vec(gmathDiv(a, gmathBroadcast2(3.1f)));
     printf(FMT_I32Vec2 "\n", PRIv2(c));
+    printf("%d\n", gmathLength2(gmathToI32Vec(b)));
 }
