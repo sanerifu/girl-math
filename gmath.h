@@ -535,15 +535,20 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VEC4_METHODS_DECLARER, , ___GMATH_
     Gmath##name##2 : gmathDistance##name##2,                  \
                      Gmath##name##3 : gmathDistance##name##3, \
                                       Gmath##name##4 : gmathDistance##name##4
-#define gmathDistance(lhs, rhs) \
-    _Generic((lhs), ___GMATH_FLOATING_VECTOR_TYPES(___GMATH_DISTANCE_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(lhs, rhs)
+#define gmathDistance(lhs, rhs)                                                                                  \
+    _Generic((lhs), ___GMATH_FLOATING_VECTOR_TYPES(___GMATH_DISTANCE_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))( \
+        lhs,                                                                                                     \
+        rhs                                                                                                      \
+    )
 
 #define ___GMATH_NORMALIZE_GENERICER(name, _1, _2)             \
     Gmath##name##2 : gmathNormalize##name##2,                  \
                      Gmath##name##3 : gmathNormalize##name##3, \
                                       Gmath##name##4 : gmathNormalize##name##4
-#define gmathNormalize(value) \
-    _Generic((value), ___GMATH_FLOATING_VECTOR_TYPES(___GMATH_NORMALIZE_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(value)
+#define gmathNormalize(value)                                                                                       \
+    _Generic((value), ___GMATH_FLOATING_VECTOR_TYPES(___GMATH_NORMALIZE_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))( \
+        value                                                                                                       \
+    )
 
 #define ___GMATH_REFLECT_GENERICER(name, _1, _2)             \
     Gmath##name##2 : gmathReflect##name##2,                  \
@@ -556,8 +561,116 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VEC4_METHODS_DECLARER, , ___GMATH_
     Gmath##name##2 : gmathRefract##name##2,                  \
                      Gmath##name##3 : gmathRefract##name##3, \
                                       Gmath##name##4 : gmathRefract##name##4
-#define gmathRefract(I_, N_, eta) \
-    _Generic((I_), ___GMATH_FLOATING_VECTOR_TYPES(___GMATH_REFRACT_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(I_, N_, eta)
+#define gmathRefract(I_, N_, eta)                                                                              \
+    _Generic((I_), ___GMATH_FLOATING_VECTOR_TYPES(___GMATH_REFRACT_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))( \
+        I_,                                                                                                    \
+        N_,                                                                                                    \
+        eta                                                                                                    \
+    )
+
+static inline GmathVec2 gmathUintBitsToFloat2(GmathU32Vec2 value) {
+    union {
+        GmathU32Vec2 i;
+        GmathVec2 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathVec3 gmathUintBitsToFloat3(GmathU32Vec3 value) {
+    union {
+        GmathU32Vec3 i;
+        GmathVec3 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathVec4 gmathUintBitsToFloat4(GmathU32Vec4 value) {
+    union {
+        GmathU32Vec4 i;
+        GmathVec4 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+#define gmathUintBitsToFloat(value)                                                                                                   \
+    _Generic((value), GmathU32Vec2: gmathUintBitsToFloat2, GmathU32Vec3: gmathUintBitsToFloat3, GmathU32Vec4: gmathUintBitsToFloat4)( \
+        value                                                                                                                         \
+    )
+
+static inline GmathVec2 gmathIntBitsToFloat2(GmathI32Vec2 value) {
+    union {
+        GmathI32Vec2 i;
+        GmathVec2 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathVec3 gmathIntBitsToFloat3(GmathI32Vec3 value) {
+    union {
+        GmathI32Vec3 i;
+        GmathVec3 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathVec4 gmathIntBitsToFloat4(GmathI32Vec4 value) {
+    union {
+        GmathI32Vec4 i;
+        GmathVec4 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+#define gmathIntBitsToFloat(value)                                                                                                 \
+    _Generic((value), GmathI32Vec2: gmathIntBitsToFloat2, GmathI32Vec3: gmathIntBitsToFloat3, GmathI32Vec4: gmathIntBitsToFloat4)( \
+        value                                                                                                                      \
+    )
+
+static inline GmathU32Vec2 gmathFloatBitsToUint2(GmathVec2 value) {
+    union {
+        GmathVec2 i;
+        GmathU32Vec2 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathU32Vec3 gmathFloatBitsToUint3(GmathVec3 value) {
+    union {
+        GmathVec3 i;
+        GmathU32Vec3 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathU32Vec4 gmathFloatBitsToUint4(GmathVec4 value) {
+    union {
+        GmathVec4 i;
+        GmathU32Vec4 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+#define gmathFloatBitsToUint(value)                                                                                          \
+    _Generic((value), GmathVec2: gmathFloatBitsToUint2, GmathVec3: gmathFloatBitsToUint3, GmathVec4: gmathFloatBitsToUint4)( \
+        value                                                                                                                \
+    )
+
+static inline GmathI32Vec2 gmathFloatBitsToInt2(GmathVec2 value) {
+    union {
+        GmathVec2 i;
+        GmathI32Vec2 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathI32Vec3 gmathFloatBitsToInt3(GmathVec3 value) {
+    union {
+        GmathVec3 i;
+        GmathI32Vec3 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+static inline GmathI32Vec4 gmathFloatBitsToInt4(GmathVec4 value) {
+    union {
+        GmathVec4 i;
+        GmathI32Vec4 o;
+    } caster = {.i = value};
+    return caster.o;
+}
+#define gmathFloatBitsToInt(value)                                                                                        \
+    _Generic((value), GmathVec2: gmathFloatBitsToInt2, GmathVec3: gmathFloatBitsToInt3, GmathVec4: gmathFloatBitsToInt4)( \
+        value                                                                                                             \
+    )
 
 #define GMATH_FMT_Vec2 "(%g, %g)"
 #define GMATH_FMT_DVec2 "(%lg, %lg)"
