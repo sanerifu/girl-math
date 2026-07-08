@@ -109,6 +109,9 @@
             .x = x.x < min_val.x ? min_val.x : (x.x > max_val.x ? max_val.x : x.x),                                  \
             .y = x.y < min_val.y ? min_val.y : (x.y > max_val.y ? max_val.y : x.y)                                   \
         };                                                                                                           \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathMix##name##2(Gmath##name##2 x, Gmath##name##2 y, Gmath##name##2 a) {           \
+        return (Gmath##name##2){.x = x.x * ((T)1 - a.x) + y.x * a.x, .y = x.y * ((T)1 - a.y) + y.y * a.y};           \
     }
 
 #define GMATH_FLOATING_VEC2_METHODS_DECLARER(name, T, _)                                              \
@@ -235,6 +238,13 @@
             .x = x.x < min_val.x ? min_val.x : (x.x > max_val.x ? max_val.x : x.x),                                    \
             .y = x.y < min_val.y ? min_val.y : (x.y > max_val.y ? max_val.y : x.y),                                    \
             .z = x.z < min_val.z ? min_val.z : (x.z > max_val.z ? max_val.z : x.z)                                     \
+        };                                                                                                             \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathMix##name##3(Gmath##name##3 x, Gmath##name##3 y, Gmath##name##3 a) {             \
+        return (Gmath##name##3){                                                                                       \
+            .x = x.x * ((T)1 - a.x) + y.x * a.x,                                                                       \
+            .y = x.y * ((T)1 - a.y) + y.y * a.y,                                                                       \
+            .z = x.z * ((T)1 - a.z) + y.z * a.z                                                                        \
         };                                                                                                             \
     }
 
@@ -377,6 +387,14 @@
             .y = x.y < min_val.y ? min_val.y : (x.y > max_val.y ? max_val.y : x.y),                                   \
             .z = x.z < min_val.z ? min_val.z : (x.z > max_val.z ? max_val.z : x.z),                                   \
             .w = x.w < min_val.w ? min_val.w : (x.w > max_val.w ? max_val.w : x.w)                                    \
+        };                                                                                                            \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathMix##name##4(Gmath##name##4 x, Gmath##name##4 y, Gmath##name##4 a) {            \
+        return (Gmath##name##4){                                                                                      \
+            .x = x.x * ((T)1 - a.x) + y.x * a.x,                                                                      \
+            .y = x.y * ((T)1 - a.y) + y.y * a.y,                                                                      \
+            .z = x.z * ((T)1 - a.z) + y.z * a.z,                                                                      \
+            .w = x.w * ((T)1 - a.w) + y.w * a.w                                                                       \
         };                                                                                                            \
     }
 
@@ -605,6 +623,11 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VEC4_METHODS_DECLARER, , ___GMATH_
     Gmath##name##2 : gmathClamp##name##2, Gmath##name##3 : gmathClamp##name##3, Gmath##name##4 : gmathClamp##name##4
 #define gmathClamp(x, min_val, max_val) \
     _Generic((x), ___GMATH_VECTOR_TYPES(___GMATH_CLAMP_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(x, min_val, max_val)
+
+#define ___GMATH_MIX_GENERICER(name, _1, _2) \
+    Gmath##name##2 : gmathMix##name##2, Gmath##name##3 : gmathMix##name##3, Gmath##name##4 : gmathMix##name##4
+#define gmathMix(x, y, a) \
+    _Generic((x), ___GMATH_VECTOR_TYPES(___GMATH_MIX_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(x, y, a)
 
 static inline GmathVec2 gmathUintBitsToFloat2(GmathU32Vec2 value) {
     union {
