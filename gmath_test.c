@@ -11,4 +11,6 @@ int main() {
     ivec2 c = gmathToI32Vec(gmathDiv(a, gmathBroadcast2(3.1f)));
     printf(FMT_I32Vec2 "\n", PRIv2(c));
     printf("%d\n", gmathLength2(gmathToI32Vec(b)));
+    vec2 clamped = gmathClamp(a, gmathBroadcast2(3.5f), gmathBroadcast2(3.75f));
+    printf(FMT_Vec2 "\n", PRIv2(clamped));
 }

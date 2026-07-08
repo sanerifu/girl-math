@@ -99,6 +99,16 @@
     }                                                                                                                \
     static inline GmathU64Vec2 gmath##name##2##To##U64Vec2(Gmath##name##2 value) {                                   \
         return (GmathU64Vec2){.x = (uint64_t)value.x, .y = (uint64_t)value.y};                                       \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathClamp##name##2(                                                                \
+        Gmath##name##2 x,                                                                                            \
+        Gmath##name##2 min_val,                                                                                      \
+        Gmath##name##2 max_val                                                                                       \
+    ) {                                                                                                              \
+        return (Gmath##name##2){                                                                                     \
+            .x = x.x < min_val.x ? min_val.x : (x.x > max_val.x ? max_val.x : x.x),                                  \
+            .y = x.y < min_val.y ? min_val.y : (x.y > max_val.y ? max_val.y : x.y)                                   \
+        };                                                                                                           \
     }
 
 #define GMATH_FLOATING_VEC2_METHODS_DECLARER(name, T, _)                                              \
@@ -215,6 +225,17 @@
     }                                                                                                                  \
     static inline GmathU64Vec3 gmath##name##3##To##U64Vec3(Gmath##name##3 value) {                                     \
         return (GmathU64Vec3){.x = (uint64_t)value.x, .y = (uint64_t)value.y, .z = (uint64_t)value.z};                 \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathClamp##name##3(                                                                  \
+        Gmath##name##3 x,                                                                                              \
+        Gmath##name##3 min_val,                                                                                        \
+        Gmath##name##3 max_val                                                                                         \
+    ) {                                                                                                                \
+        return (Gmath##name##3){                                                                                       \
+            .x = x.x < min_val.x ? min_val.x : (x.x > max_val.x ? max_val.x : x.x),                                    \
+            .y = x.y < min_val.y ? min_val.y : (x.y > max_val.y ? max_val.y : x.y),                                    \
+            .z = x.z < min_val.z ? min_val.z : (x.z > max_val.z ? max_val.z : x.z)                                     \
+        };                                                                                                             \
     }
 
 #define GMATH_FLOATING_VEC3_METHODS_DECLARER(name, T, _)                                              \
@@ -345,6 +366,18 @@
         return (                                                                                                      \
             GmathU64Vec4                                                                                              \
         ){.x = (uint64_t)value.x, .y = (uint64_t)value.y, .z = (uint64_t)value.z, .w = (uint64_t)value.w};            \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathClamp##name##4(                                                                 \
+        Gmath##name##4 x,                                                                                             \
+        Gmath##name##4 min_val,                                                                                       \
+        Gmath##name##4 max_val                                                                                        \
+    ) {                                                                                                               \
+        return (Gmath##name##4){                                                                                      \
+            .x = x.x < min_val.x ? min_val.x : (x.x > max_val.x ? max_val.x : x.x),                                   \
+            .y = x.y < min_val.y ? min_val.y : (x.y > max_val.y ? max_val.y : x.y),                                   \
+            .z = x.z < min_val.z ? min_val.z : (x.z > max_val.z ? max_val.z : x.z),                                   \
+            .w = x.w < min_val.w ? min_val.w : (x.w > max_val.w ? max_val.w : x.w)                                    \
+        };                                                                                                            \
     }
 
 #define GMATH_FLOATING_VEC4_METHODS_DECLARER(name, T, _)                                              \
@@ -567,6 +600,11 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VEC4_METHODS_DECLARER, , ___GMATH_
         N_,                                                                                                    \
         eta                                                                                                    \
     )
+
+#define ___GMATH_CLAMP_GENERICER(name, _1, _2) \
+    Gmath##name##2 : gmathClamp##name##2, Gmath##name##3 : gmathClamp##name##3, Gmath##name##4 : gmathClamp##name##4
+#define gmathClamp(x, min_val, max_val) \
+    _Generic((x), ___GMATH_VECTOR_TYPES(___GMATH_CLAMP_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(x, min_val, max_val)
 
 static inline GmathVec2 gmathUintBitsToFloat2(GmathU32Vec2 value) {
     union {
