@@ -370,10 +370,19 @@ ___GMATH_VECTOR_TYPE_LIST(GMATH_VEC4_DECLARER, )
         }                                                                                            \
     }
 
+#define GMATH_VEC3_METHODS_DECLARER(name, T, length)                                                                   \
+    static inline Gmath##name##length gmathCross##name##length(Gmath##name##length lhs, Gmath##name##length rhs) {     \
+        return (                                                                                                       \
+            Gmath##name##length                                                                                        \
+        ){.x = lhs.y * rhs.z - lhs.z * rhs.y, .y = lhs.z * rhs.x - lhs.x * rhs.z, .z = lhs.x * rhs.y - lhs.y * rhs.x}; \
+    }
+
 ___GMATH_VECTOR_TYPES(GMATH_VECTOR_METHODS_DECLARER, )
+___GMATH_VECTOR3_TYPES(GMATH_VEC3_METHODS_DECLARER, )
 ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VECTOR_METHODS_DECLARER, )
 #undef GMATH_VECTOR_METHODS_DECLARER
 #undef GMATH_FLOATING_VECTOR_METHODS_DECLARER
+#undef GMATH_VEC3_METHODS_DECLARER
 
 #define ___GMATH_COMMA ,
 
@@ -452,7 +461,7 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VECTOR_METHODS_DECLARER, )
 
 #define ___GMATH_I64VEC_FROM_GENERICER(name, _, length) Gmath##name##length : gmathI64Vec##length##From##name##length
 #define gmathI64VecFrom(value) \
-    _Generic((value), __Vec2_GMATH_VECTOR_TYPES(___GMATH_I64VEC_FROM_GENERICER, ___GMATH_COMMA))(value)
+    _Generic((value), ___GMATH_VECTOR_TYPES(___GMATH_I64VEC_FROM_GENERICER, ___GMATH_COMMA))(value)
 
 #define ___GMATH_U64VEC_FROM_GENERICER(name, _, length) Gmath##name##length : gmathU64Vec##length##From##name##length
 #define gmathU64VecFrom(value) \
@@ -487,6 +496,9 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VECTOR_METHODS_DECLARER, )
 #define ___GMATH_NOT_EQUAL_GENERICER(name, _, length) Gmath##name##length : gmathNotEqual##name##length
 #define gmathNotEqual(lhs, rhs) \
     _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_NOT_EQUAL_GENERICER, ___GMATH_COMMA))(lhs, rhs)
+
+#define ___GMATH_CROSS_GENERICER(name, _, length) Gmath##name##length : gmathCross##name##length
+#define gmathCross(lhs, rhs) _Generic((lhs), ___GMATH_VECTOR3_TYPES(___GMATH_CROSS_GENERICER, ___GMATH_COMMA))(lhs, rhs)
 
 static inline GmathVec2 gmathUintBitsToFloat2(GmathU32Vec2 value) {
     union {
