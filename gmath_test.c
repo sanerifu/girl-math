@@ -12,5 +12,6 @@ int main() {
     printf(FMT_I32Vec2 "\n", PRIv2(c));
     printf("%d\n", gmathLength2(gmathToI32Vec(b)));
     vec2 mixed = gmathMix(a, b, ((vec2){.x = 0.5f, .y = 0.25f}));
-    printf(FMT_Vec2 "\n", PRIv2(mixed));
+    vec2 compared = gmathLessThan(a, b);
+    printf(FMT_Vec2 "\n", PRIv2(compared));
 }

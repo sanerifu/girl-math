@@ -112,6 +112,24 @@
     }                                                                                                                \
     static inline Gmath##name##2 gmathMix##name##2(Gmath##name##2 x, Gmath##name##2 y, Gmath##name##2 a) {           \
         return (Gmath##name##2){.x = x.x * ((T)1 - a.x) + y.x * a.x, .y = x.y * ((T)1 - a.y) + y.y * a.y};           \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathLessThan##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) {                    \
+        return (Gmath##name##2){.x = (T)(lhs.x < rhs.x), .y = (T)(lhs.y < rhs.y)};                                   \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathGreaterThan##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) {                 \
+        return (Gmath##name##2){.x = (T)(lhs.x > rhs.x), .y = (T)(lhs.y > rhs.y)};                                   \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathLessThanEqual##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) {               \
+        return (Gmath##name##2){.x = (T)(lhs.x <= rhs.x), .y = (T)(lhs.y <= rhs.y)};                                 \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathGreaterThanEqual##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) {            \
+        return (Gmath##name##2){.x = (T)(lhs.x >= rhs.x), .y = (T)(lhs.y >= rhs.y)};                                 \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathEqual##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) {                       \
+        return (Gmath##name##2){.x = (T)(lhs.x == rhs.x), .y = (T)(lhs.y == rhs.y)};                                 \
+    }                                                                                                                \
+    static inline Gmath##name##2 gmathNotEqual##name##2(Gmath##name##2 lhs, Gmath##name##2 rhs) {                    \
+        return (Gmath##name##2){.x = (T)(lhs.x != rhs.x), .y = (T)(lhs.y != rhs.y)};                                 \
     }
 
 #define GMATH_FLOATING_VEC2_METHODS_DECLARER(name, T, _)                                              \
@@ -246,6 +264,24 @@
             .y = x.y * ((T)1 - a.y) + y.y * a.y,                                                                       \
             .z = x.z * ((T)1 - a.z) + y.z * a.z                                                                        \
         };                                                                                                             \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathLessThan##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {                      \
+        return (Gmath##name##3){.x = (T)(lhs.x < rhs.x), .y = (T)(lhs.y < rhs.y), .z = (T)(lhs.z < rhs.z)};            \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathGreaterThan##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {                   \
+        return (Gmath##name##3){.x = (T)(lhs.x > rhs.x), .y = (T)(lhs.y > rhs.y), .z = (T)(lhs.z > rhs.z)};            \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathLessThanEqual##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {                 \
+        return (Gmath##name##3){.x = (T)(lhs.x <= rhs.x), .y = (T)(lhs.y <= rhs.y), .z = (T)(lhs.z <= rhs.z)};         \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathGreaterThanEqual##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {              \
+        return (Gmath##name##3){.x = (T)(lhs.x >= rhs.x), .y = (T)(lhs.y >= rhs.y), .z = (T)(lhs.z >= rhs.z)};         \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathEqual##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {                         \
+        return (Gmath##name##3){.x = (T)(lhs.x == rhs.x), .y = (T)(lhs.y == rhs.y), .z = (T)(lhs.z == rhs.z)};         \
+    }                                                                                                                  \
+    static inline Gmath##name##3 gmathNotEqual##name##3(Gmath##name##3 lhs, Gmath##name##3 rhs) {                      \
+        return (Gmath##name##3){.x = (T)(lhs.x != rhs.x), .y = (T)(lhs.y != rhs.y), .z = (T)(lhs.z != rhs.z)};         \
     }
 
 #define GMATH_FLOATING_VEC3_METHODS_DECLARER(name, T, _)                                              \
@@ -396,6 +432,36 @@
             .z = x.z * ((T)1 - a.z) + y.z * a.z,                                                                      \
             .w = x.w * ((T)1 - a.w) + y.w * a.w                                                                       \
         };                                                                                                            \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathLessThan##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {                     \
+        return (                                                                                                      \
+            Gmath##name##4                                                                                            \
+        ){.x = (T)(lhs.x < rhs.x), .y = (T)(lhs.y < rhs.y), .z = (T)(lhs.z < rhs.z), .w = (T)(lhs.w < rhs.w)};        \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathGreaterThan##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {                  \
+        return (                                                                                                      \
+            Gmath##name##4                                                                                            \
+        ){.x = (T)(lhs.x > rhs.x), .y = (T)(lhs.y > rhs.y), .z = (T)(lhs.z > rhs.z), .w = (T)(lhs.w > rhs.w)};        \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathLessThanEqual##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {                \
+        return (                                                                                                      \
+            Gmath##name##4                                                                                            \
+        ){.x = (T)(lhs.x <= rhs.x), .y = (T)(lhs.y <= rhs.y), .z = (T)(lhs.z <= rhs.z), .w = (T)(lhs.w <= rhs.w)};    \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathGreaterThanEqual##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {             \
+        return (                                                                                                      \
+            Gmath##name##4                                                                                            \
+        ){.x = (T)(lhs.x >= rhs.x), .y = (T)(lhs.y >= rhs.y), .z = (T)(lhs.z >= rhs.z), .w = (T)(lhs.w >= rhs.w)};    \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathEqual##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {                        \
+        return (                                                                                                      \
+            Gmath##name##4                                                                                            \
+        ){.x = (T)(lhs.x == rhs.x), .y = (T)(lhs.y == rhs.y), .z = (T)(lhs.z == rhs.z), .w = (T)(lhs.w == rhs.w)};    \
+    }                                                                                                                 \
+    static inline Gmath##name##4 gmathNotEqual##name##4(Gmath##name##4 lhs, Gmath##name##4 rhs) {                     \
+        return (                                                                                                      \
+            Gmath##name##4                                                                                            \
+        ){.x = (T)(lhs.x != rhs.x), .y = (T)(lhs.y != rhs.y), .z = (T)(lhs.z != rhs.z), .w = (T)(lhs.w != rhs.w)};    \
     }
 
 #define GMATH_FLOATING_VEC4_METHODS_DECLARER(name, T, _)                                              \
@@ -628,6 +694,49 @@ ___GMATH_FLOATING_VECTOR_TYPES(GMATH_FLOATING_VEC4_METHODS_DECLARER, , ___GMATH_
     Gmath##name##2 : gmathMix##name##2, Gmath##name##3 : gmathMix##name##3, Gmath##name##4 : gmathMix##name##4
 #define gmathMix(x, y, a) \
     _Generic((x), ___GMATH_VECTOR_TYPES(___GMATH_MIX_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(x, y, a)
+
+#define ___GMATH_LESS_THAN_GENERICER(name, _1, _2)            \
+    Gmath##name##2 : gmathLessThan##name##2,                  \
+                     Gmath##name##3 : gmathLessThan##name##3, \
+                                      Gmath##name##4 : gmathLessThan##name##4
+#define gmathLessThan(lhs, rhs) \
+    _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_LESS_THAN_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(lhs, rhs)
+
+#define ___GMATH_GREATER_THAN_GENERICER(name, _1, _2)            \
+    Gmath##name##2 : gmathGreaterThan##name##2,                  \
+                     Gmath##name##3 : gmathGreaterThan##name##3, \
+                                      Gmath##name##4 : gmathGreaterThan##name##4
+#define gmathGreaterThan(lhs, rhs) \
+    _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_GREATER_THAN_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(lhs, rhs)
+
+#define ___GMATH_LESS_THAN_EQUAL_GENERICER(name, _1, _2)           \
+    Gmath##name##2 : gmathLessThanEqual##name##2,                  \
+                     Gmath##name##3 : gmathLessThanEqual##name##3, \
+                                      Gmath##name##4 : gmathLessThanEqual##name##4
+#define gmathLessThanEqual(lhs, rhs) \
+    _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_LESS_THAN_EQUAL_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(lhs, rhs)
+
+#define ___GMATH_GREATER_THAN_EQUAL_GENERICER(name, _1, _2)           \
+    Gmath##name##2 : gmathGreaterThanEqual##name##2,                  \
+                     Gmath##name##3 : gmathGreaterThanEqual##name##3, \
+                                      Gmath##name##4 : gmathGreaterThanEqual##name##4
+#define gmathGreaterThanEqual(lhs, rhs)                                                                           \
+    _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_GREATER_THAN_EQUAL_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))( \
+        lhs,                                                                                                      \
+        rhs                                                                                                       \
+    )
+
+#define ___GMATH_EQUAL_GENERICER(name, _1, _2) \
+    Gmath##name##2 : gmathEqual##name##2, Gmath##name##3 : gmathEqual##name##3, Gmath##name##4 : gmathEqual##name##4
+#define gmathEqual(lhs, rhs) \
+    _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_EQUAL_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(lhs, rhs)
+
+#define ___GMATH_NOT_EQUAL_GENERICER(name, _1, _2)            \
+    Gmath##name##2 : gmathNotEqual##name##2,                  \
+                     Gmath##name##3 : gmathNotEqual##name##3, \
+                                      Gmath##name##4 : gmathNotEqual##name##4
+#define gmathNotEqual(lhs, rhs) \
+    _Generic((lhs), ___GMATH_VECTOR_TYPES(___GMATH_NOT_EQUAL_GENERICER, ___GMATH_COMMA, ___GMATH_EVAL))(lhs, rhs)
 
 static inline GmathVec2 gmathUintBitsToFloat2(GmathU32Vec2 value) {
     union {
